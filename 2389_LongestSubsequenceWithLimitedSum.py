@@ -9,15 +9,23 @@ class Solution:
         left_sums = []
 
         for num in nums:
-            left_sums += num
+            left_sum += num
             left_sums.append(left_sum)
 
         for query in queries:
-            for i, sum_ in enumerate(left_sums):
-                if sum_ > query:
-                    answer.append(i)
-                    break
-            else:
-                answer.append(i + 1)
+            l, r = 0, len(left_sums) - 1
+
+            while l <= r:
+                middle = (l + r) // 2
+                if left_sums[middle] > query:
+                    r = middle
+                else:
+                    l = middle + 1
+            answer.append(l)
+
+        '''
+         l           m               r  
+        [1, 2, 3, 8, 9, 11, 25, 26, 27]
+        '''
 
         return answer
