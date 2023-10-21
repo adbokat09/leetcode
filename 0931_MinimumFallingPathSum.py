@@ -12,23 +12,13 @@ class Solution:
 
         for i in range(n):
             result_matrix[i][0] = float('inf')
-
-        for i in range(n):
             result_matrix[i][-1] = float('inf')
 
         for i in range(1, n):
             for j in range(1,  n + 1):
-
-                result_matrix[i][j] = matrix[i][j - 1] + min(result_matrix[i - 1][j - 1], result_matrix[i - 1][j], result_matrix[i - 1][j + 1])
-                # result_matrix[i][j] = matrix[i][j - 1] + min(matrix[i - 1][j - 1], matrix[i - 1][j - 2], matrix[i -1][j - 3])
-
-                # result_matrix[i][j] = min(matrix[i - 1][j + 1], matrix[i - 2][j + 1], matrix[i + 1][j + 2])
-
-                # print(matrix[i])
-                # print(matrix[i][j])
-        print()
-        for row in result_matrix:
-            print(row)
+                result_matrix[i][j] = matrix[i][j - 1] + min(result_matrix[i - 1][j - 1],
+                                                             result_matrix[i - 1][j],
+                                                             result_matrix[i - 1][j + 1])
 
         return min(result_matrix[-1])
 
